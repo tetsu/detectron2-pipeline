@@ -11,3 +11,6 @@ __pycache__/
 
 # Project dependant
 output/
+
+# image and video files
+*.webm
