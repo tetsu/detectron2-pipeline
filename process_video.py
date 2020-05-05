@@ -7,6 +7,7 @@ from pipeline.capture_frames import CaptureFrames
 from pipeline.predict import Predict
 from pipeline.async_predict import AsyncPredict
 from pipeline.separate_background import SeparateBackground
+from pipeline.white_background import WhiteBackground
 from pipeline.annotate_video import AnnotateVideo
 from pipeline.display_video import DisplayVideo
 from pipeline.save_video import SaveVideo
@@ -33,6 +34,8 @@ def parse_args():
                     help="display video")
     ap.add_argument("-sb", "--separate-background", action="store_true",
                     help="separate background")
+    ap.add_argument("-wb", "--white-background", action="store_true",
+                    help="white background")
     ap.add_argument("-tp", "--track-pose", action="store_true",
                     help="track pose")
 
@@ -111,6 +114,16 @@ def main(args):
         annotate_video = AnnotateVideo("vis_image", metadata_name,
                                        predictions=track_pose is None,
                                        pose_flows=track_pose is not None)
+    
+    if args.white_background:
+        white_background = WhiteBackground("vis_image")
+        annotate_video = None
+    else:
+        white_background = None
+        metadata_name = cfg.DATASETS.TEST[0] if len(cfg.DATASETS.TEST) else "__unused"
+        annotate_video = AnnotateVideo("vis_image", metadata_name,
+                                       predictions=track_pose is None,
+                                       pose_flows=track_pose is not None)
 
     display_video = DisplayVideo("vis_image") \
         if args.display else None
@@ -124,6 +137,7 @@ def main(args):
                 predict |
                 track_pose |
                 separate_background |
+                white_background |
                 annotate_video |
                 display_video |
                 save_video)

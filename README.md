@@ -51,6 +51,14 @@ For video processing run:
 
     $ python process_video.py -i assets/videos/walk.small.mp4 -p -d -ov walk.small.mp4
 
+For video background separation run:
+
+    $ python process_video.py -i assets/videos/walk.small.mp4 -sb -d -ov walk.small.mp4
+
+For video segmentation run:
+
+    $ python process_video.py -i assets/videos/walk.small.mp4 -wb -d -ov walk.small.mp4
+
 ## Tests
 
 `pytest` is used as a test framework. All tests are stored in `tests` folder. Run the tests:
