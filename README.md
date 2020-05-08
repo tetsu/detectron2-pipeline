@@ -59,6 +59,8 @@ For video segmentation run:
 
     $ python process_video.py -i assets/videos/walk.small.mp4 -wb -d -ov walk.small.mp4
 
+    $ python process_video.py -i iOS.MP4 -cb -d -bc 255 255 255 -ov iOS-09.mp4
+
 ## Tests
 
 `pytest` is used as a test framework. All tests are stored in `tests` folder. Run the tests:

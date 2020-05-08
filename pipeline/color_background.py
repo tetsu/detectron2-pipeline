@@ -4,10 +4,11 @@ import numpy as np
 import cv2
 
 
-class WhiteBackground(Pipeline):
+class ColorBackground(Pipeline):
 
-    def __init__(self, dst, me_kernel=(7, 7), bg_kernel=(21, 21), desaturate=True):
+    def __init__(self, dst, bg_color=(255, 255, 255), me_kernel=(7, 7), bg_kernel=(21, 21), desaturate=True):
         self.dst = dst
+        self.bg_color = bg_color
         self.me_kernel = me_kernel  # mask edges gaussian blur kernel
         self.bg_kernel = bg_kernel  # background gaussian blur kernel
         self.desaturate = desaturate  # convert background to grayscale
@@ -15,11 +16,11 @@ class WhiteBackground(Pipeline):
         super().__init__()
 
     def map(self, data):
-        self.separate_background(data)
+        self.color_background(data)
 
         return data
 
-    def separate_background(self, data):
+    def color_background(self, data):
         if "predictions" not in data:
             return
 
@@ -50,7 +51,7 @@ class WhiteBackground(Pipeline):
         background = np.zeros((h, w, c), np.uint8)
 
         # change background image color to white
-        background[:] = (255, 255, 255)
+        background[:] = self.bg_color
 
         # # Create a Gaussian blur for the background image
         # background = cv2.GaussianBlur(foreground, self.bg_kernel, 0)
