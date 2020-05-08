@@ -1,0 +1,9 @@
+_BASE_: "../../../detectron2/configs/Base-RCNN-DilatedC5.yaml"
+MODEL:
+  WEIGHTS: "detectron2://COCO-InstanceSegmentation/mask_rcnn_R_101_DC5_3x/138363294/model_final_0464b7.pkl"
+  MASK_ON: True
+  RESNETS:
+    DEPTH: 101
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000

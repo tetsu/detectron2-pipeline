@@ -40,9 +40,18 @@ def parse_args():
                     help="track pose")
 
     # Detectron settings
+    # ap.add_argument("--config-file",
+    #                 default="configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml",
+    #                 help="path to config file (default: configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml)")
+    # ap.add_argument("--config-file",
+    #                 default="configs/COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x.yaml",
+    #                 help="path to config file (default: configs/COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x.yaml)")
+    # ap.add_argument("--config-file",
+    #                 default="configs/COCO-InstanceSegmentation/mask_rcnn_R_101_DC5_3x.yaml",
+    #                 help="path to config file (default: configs/COCO-InstanceSegmentation/mask_rcnn_R_101_DC5_3x.yaml)")
     ap.add_argument("--config-file",
-                    default="configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml",
-                    help="path to config file (default: configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml)")
+                    default="configs/COCO-InstanceSegmentation/mask_rcnn_X_101_32x8d_FPN_3x.yaml",
+                    help="path to config file (default: configs/COCO-InstanceSegmentation/mask_rcnn_X_101_32x8d_FPN_3x.yaml)")
     ap.add_argument("--config-opts", default=[], nargs=argparse.REMAINDER,
                     help="modify model config options using the command-line")
     ap.add_argument("--weights-file", default=None,
