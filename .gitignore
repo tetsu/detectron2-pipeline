@@ -14,3 +14,5 @@ output/
 
 # image and video files
 *.webm
+*.mp4
+*.MP4
